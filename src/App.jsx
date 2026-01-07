@@ -3,6 +3,8 @@ import './App.css'
 
 function App() {
   const [url, setUrl] = useState('')
+  const [width, setWidth] = useState('')
+  const [height, setHeight] = useState('')
   const [iframeCode, setIframeCode] = useState('')
 
   const extractVideoId = (url) => {
@@ -40,7 +42,11 @@ function App() {
       return
     }
 
-    const embedCode = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+    // 기본값: 560x315, 입력값이 없으면 기본값 사용
+    const iframeWidth = width.trim() && parseInt(width) > 0 ? parseInt(width) : 560
+    const iframeHeight = height.trim() && parseInt(height) > 0 ? parseInt(height) : 315
+
+    const embedCode = `<iframe width="${iframeWidth}" height="${iframeHeight}" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" style="border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="lazy"></iframe>`
     
     setIframeCode(embedCode)
   }
@@ -57,10 +63,37 @@ function App() {
       <h1>YouTube Shorts Converter</h1>
       <p className="subtitle">YouTube Shorts 링크를 iframe 코드로 변환합니다</p>
       
+      <div className="size-section">
+        <div className="size-input-group">
+          <label htmlFor="width">넓이 (기본: 560)</label>
+          <input
+            id="width"
+            type="number"
+            placeholder="560"
+            value={width}
+            onChange={(e) => setWidth(e.target.value)}
+            min="1"
+            className="size-input"
+          />
+        </div>
+        <div className="size-input-group">
+          <label htmlFor="height">높이 (기본: 315)</label>
+          <input
+            id="height"
+            type="number"
+            placeholder="315"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+            min="1"
+            className="size-input"
+          />
+        </div>
+      </div>
+
       <div className="input-section">
         <input
           type="text"
-          placeholder="https://youtube.com/shorts/zuj4XvGdGS4?si=..."
+          placeholder="https://youtube.com/shorts/..."
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && handleConvert()}

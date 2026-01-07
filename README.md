@@ -17,11 +17,11 @@ YouTube Shorts 링크를 iframe embed 코드로 변환하는 간단한 웹 애�
 
 ## 예시
 
-입력: `https://youtube.com/shorts/zuj4XvGdGS4?si=rnHs8SkFvPkYCVbu`
+입력: `https://youtube.com/shorts/VIDEO_ID`
 
 출력:
 ```html
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zuj4XvGdGS4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video player" style="border: 0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="lazy"></iframe>
 ```
 
 ## 개발

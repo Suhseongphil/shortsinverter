@@ -1,5 +1,6 @@
 .container {
   max-width: 900px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -54,6 +55,42 @@ h1 {
 
 .convert-btn:hover {
   background-color: #cc0000;
+}
+
+.size-section {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.size-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.size-input-group label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.size-input {
+  width: 150px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.size-input:focus {
+  border-color: #ff0000;
 }
 
 .result-section {
@@ -138,6 +175,15 @@ h1 {
   
   .url-input,
   .convert-btn {
+    width: 100%;
+  }
+
+  .size-section {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .size-input {
     width: 100%;
   }
   
